@@ -27,15 +27,15 @@ append_to_json() {
 while getopts 'st:c:a:x:u:d:f:v:h:' opt; do
   case "${opt}" in
     s) enable_timestamp=true ;;
-    t) title=${OPTARG} ;;
-    c) color=${OPTARG} ;;
-    a) author=${OPTARG} ; enable_author=true ;;
-    x) authorthumb=${OPTARG} ; enable_author=true ;;
-    u) thumb=${OPTARG} ;;
-    d) description=${OPTARG} ;;
+    t) title="${OPTARG}" ;;
+    c) color="${OPTARG}" ;;
+    a) author="${OPTARG}" ; enable_author=true ;;
+    x) authorthumb="${OPTARG}" ; enable_author=true ;;
+    u) thumb="${OPTARG}" ;;
+    d) description="${OPTARG}" ;;
     f) fields+=("${OPTARG}") ;;
     v) values+=("${OPTARG}") ;;
-    h) hook=${OPTARG} ;;
+    h) hook="${OPTARG}" ;;
     *) print_usage
        exit 1 ;;
   esac
@@ -53,7 +53,7 @@ fi
 # handles title
 if [ "" != "${title}" ]
 then
-  append_to_json '"title": "'${title}'",'
+  append_to_json '"title": "'"${title}"'",'
 fi
 
 # handles color
